@@ -22,4 +22,4 @@ This is a simple web-based game of **Rock, Paper, Scissors, Lizard, Spock**, an 
 1. **Copy the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/rock-paper-scissors-lizard-spock.git
+   git clone https://8000-raphaelzemuner-project2-l8658vbwurf.ws.codeinstitute-ide.net/

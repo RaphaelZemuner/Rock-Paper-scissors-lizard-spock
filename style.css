@@ -93,13 +93,14 @@ h1 {
 }
 
 /* Responsive adjustments */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .container {
         width: 90%; /* Make container responsive on smaller screens */
+        padding: 20px; /* Reduced padding */
     }
 
     h1 {
-        font-size: 20px; /* Adjust font size for smaller screens */
+        font-size: 22px; /* Adjust font size for smaller screens */
     }
 
     .choice {
@@ -109,4 +110,33 @@ h1 {
     #restart {
         font-size: 16px; /* Smaller restart button */
     }
+
+    .scoreboard {
+        font-size: 16px; /* Smaller scoreboard text */
+    }
 }
+
+@media (max-width: 400px) {
+    .container {
+        width: 95%; /* Make container responsive on very small screens */
+        padding: 15px; /* Further reduced padding */
+    }
+
+    h1 {
+        font-size: 20px; /* Smaller heading on very small screens */
+    }
+
+    .choice {
+        padding: 12px 20px; /* Smaller button size */
+        font-size: 14px; /* Even smaller buttons */
+    }
+
+    #result {
+        font-size: 18px; /* Smaller result text */
+    }
+
+    .scoreboard {
+        font-size: 14px; /* Smaller scoreboard text */
+    }
+}
+
