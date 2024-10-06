@@ -1,51 +1,82 @@
-const choices = document.querySelectorAll('.choice');
-const playerChoiceDisplay = document.getElementById('player-choice');
-const computerChoiceDisplay = document.getElementById('computer-choice');
-const resultMessage = document.getElementById('result-message');
+const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+let userScore = 0;
+let computerScore = 0;
+let remainingTries = 5;
 
-const choicesArray = ['rock', 'paper', 'scissors'];
+const resultDisplay = document.getElementById('result');
+const userScoreDisplay = document.getElementById('userScore');
+const computerScoreDisplay = document.getElementById('computerScore');
+const remainingTriesDisplay = document.getElementById('remainingTries');
+const restartButton = document.getElementById('restart');
 
-choices.forEach(choice => {
-    choice.addEventListener('click', (e) => {
-        const playerChoice = e.target.id;
-        const computerChoice = getComputerChoice();
-        const result = getResult(playerChoice, computerChoice);
-        updateUI(playerChoice, computerChoice, result);
+document.querySelectorAll('.choice').forEach(button => {
+    button.addEventListener('click', () => {
+        if (remainingTries > 0) {
+            const userChoice = button.getAttribute('data-choice');
+            const computerChoice = getComputerChoice();
+            const result = determineWinner(userChoice, computerChoice);
+            updateScore(result);
+            displayResult(userChoice, computerChoice, result);
+            remainingTries--;
+            remainingTriesDisplay.innerText = remainingTries;
+        }
+
+        if (remainingTries === 0) {
+            endGame();
+        }
     });
 });
 
 function getComputerChoice() {
-    const randomIndex = Math.floor(Math.random() * 3);
-    return choicesArray[randomIndex];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
 }
 
-function getResult(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
-        return 'It\'s a draw!';
+function determineWinner(userChoice, computerChoice) {
+    if (userChoice === computerChoice) return 'draw';
+    
+    const winningConditions = {
+        rock: ['scissors', 'lizard'],
+        paper: ['rock', 'spock'],
+        scissors: ['paper', 'lizard'],
+        lizard: ['spock', 'paper'],
+        spock: ['scissors', 'rock'],
+    };
+
+    return winningConditions[userChoice].includes(computerChoice) ? 'win' : 'lose';
+}
+
+function updateScore(result) {
+    if (result === 'win') {
+        userScore++;
+        userScoreDisplay.innerText = userScore;
+    } else if (result === 'lose') {
+        computerScore++;
+        computerScoreDisplay.innerText = computerScore;
     }
-    if (
-        (playerChoice === 'rock' && computerChoice === 'scissors') ||
-        (playerChoice === 'paper' && computerChoice === 'rock') ||
-        (playerChoice === 'scissors' && computerChoice === 'paper')
-    ) {
-        return 'You win!';
-    } else {
-        return 'You lose!';
-    }
 }
 
-function updateUI(playerChoice, computerChoice, result) {
-    playerChoiceDisplay.textContent = `You chose: ${capitalize(playerChoice)}`;
-    computerChoiceDisplay.textContent = `Computer chose: ${capitalize(computerChoice)}`;
-    resultMessage.textContent = result;
+function displayResult(userChoice, computerChoice, result) {
+    resultDisplay.innerText = `You chose ${userChoice}. Computer chose ${computerChoice}. You ${result}!`;
 }
 
-function capitalize(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
+function endGame() {
+    resultDisplay.innerText += " Game over!";
+    document.querySelectorAll('.choice').forEach(button => button.disabled = true);
+    restartButton.style.display = 'block';
 }
 
-function restartGame() {
-    playerChoiceDisplay.textContent = 'You chose: ';
-    computerChoiceDisplay.textContent = 'Computer chose: ';
-    resultMessage.textContent = '';
-}
+restartButton.addEventListener('click', () => {
+    userScore = 0;
+    computerScore = 0;
+    remainingTries = 5;
+
+    userScoreDisplay.innerText = userScore;
+    computerScoreDisplay.innerText = computerScore;
+    remainingTriesDisplay.innerText = remainingTries;
+    resultDisplay.innerText = '';
+    document.querySelectorAll('.choice').forEach(button => button.disabled = false);
+    restartButton.style.display = 'none';
+});
+
+

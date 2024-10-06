@@ -1,70 +1,112 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* styles.css */
 
 body {
     font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #e6f2ff, #cce0ff);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-    background-image: url(project-2background.webp)
+    margin: 0;
+    background-image: url(project-2background.webp);
 }
 
 .container {
     text-align: center;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    width: 320px; /* Set a fixed width for better layout */
 }
 
 h1 {
     margin-bottom: 20px;
-    font-size: 2rem;
+    font-size: 24px;
+    color: #333;
 }
 
-.choices {
+.scoreboard {
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #555;
+}
+
+.buttons {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column; /* Arrange buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 15px; /* Space between buttons */
 }
 
 .choice {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    margin: 0 10px;
-    font-size: 1.5rem;
+    padding: 15px 30px; /* Padding for a better button size */
+    font-size: 18px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%; /* Full width buttons */
+    font-weight: bold; /* Bold font for emphasis */
 }
 
 .choice:hover {
-    background-color: #2980b9;
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-.result {
-    margin-bottom: 20px;
-    font-size: 1.25rem;
+.choice:active {
+    transform: translateY(1px); /* Slight press effect */
 }
 
-.restart {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.25rem;
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+    min-height: 50px; /* Ensures space for result message */
+}
+
+#restart {
+    margin-top: 20px; /* Space above the restart button */
+    padding: 12px 25px;
+    font-size: 18px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border: none;
+    border-radius: 8px;
+    background-color: #28a745; /* Green background for restart */
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+    display: none; /* Initially hidden */
+    width: 100%; /* Full width restart button */
+    font-weight: bold; /* Bold font for emphasis */
 }
 
-.restart:hover {
-    background-color: #c0392b;
+#restart:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px);
+}
+
+#restart:active {
+    transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .container {
+        width: 90%; /* Make container responsive on smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .choice {
+        font-size: 16px; /* Smaller buttons on smaller screens */
+    }
+
+    #restart {
+        font-size: 16px; /* Smaller restart button */
+    }
 }

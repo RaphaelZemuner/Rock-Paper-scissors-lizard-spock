@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors Game</title>
+    <title>Rock, Paper, Scissors, Lizard, Spock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Rock, Paper, Scissors</h1>
-        <div class="choices">
-            <button class="choice" id="rock">✊ Rock</button>
-            <button class="choice" id="paper">✋ Paper</button>
-            <button class="choice" id="scissors">✌️ Scissors</button>
+        <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+        <div class="scoreboard">
+            <div>User Score: <span id="userScore">0</span></div>
+            <div>Computer Score: <span id="computerScore">0</span></div>
+            <div>Remaining Tries: <span id="remainingTries">5</span></div>
         </div>
-        <div class="result">
-            <p id="player-choice">You chose: </p>
-            <p id="computer-choice">Computer chose: </p>
-            <p id="result-message"></p>
+        <div class="buttons">
+            <button class="choice" data-choice="rock">Rock 🪨</button>
+            <button class="choice" data-choice="paper">Paper 📄</button>
+            <button class="choice" data-choice="scissors">Scissors ✂️</button>
+            <button class="choice" data-choice="lizard">Lizard 🦎</button>
+            <button class="choice" data-choice="spock">Spock 🖖</button>
         </div>
-        <button class="restart" onclick="restartGame()">Restart Game</button>
+        <div id="result"></div>
+        <button id="restart" style="display: none;">Restart Game 🔄</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
