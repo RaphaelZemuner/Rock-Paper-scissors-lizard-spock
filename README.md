@@ -9,7 +9,7 @@ Rock, Paper, Scissors, Lizard, Spock is an engaging web-based game that expands 
 #### Game Title and Logo
 Featured prominently at the top of the page, the Rock, Paper, Scissors, Lizard, Spock logo and heading make it easy for users to identify the game.
 
-![Title](/workspace/project-2/Screenshot 2024-10-07 at 08.19.32.png)
+![title](/workspace/project-2/logo.png)
 
 #### Game Area
 This section allows users to play the game by clicking on icons for Rock, Paper, Scissors, Lizard, and Spock. The buttons are clearly labeled and visually appealing, encouraging user interaction.
